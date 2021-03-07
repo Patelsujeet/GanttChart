@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>ganttChart</members>
+        <members>ganttChartHeader</members>
+        <members>ganttChartLeft</members>
+        <members>ganttChartLibraryMethods</members>
+        <members>ganttChartViewComponent</members>
+        <members>pubsub</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>ContactDetail</members>
+        <name>ApexClass</name>
+    </types> 
+    <version>51.0</version>
+</Package>

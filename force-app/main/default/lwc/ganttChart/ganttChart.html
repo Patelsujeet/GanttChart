@@ -1,0 +1,25 @@
+<template>
+
+    <div class="chart-wrapper">
+        <ul class="chart-values">
+            <template for:each={ganttChartColumnsHeader} for:item="col">
+                <li key={col} >{col}</li>
+            </template>
+        </ul>
+
+
+        <ul class="chart-bars">
+            
+            <li data-duration="Jan-Mar" data-color="#33a8a5" >R814220 Kum Ma</li>
+            <li data-duration="May-Jul" data-color="#30997a" >R8144165 Michael Domma</li>
+           
+          
+            <li data-duration="Feb-Aug" data-color="#3d8bb1" >Development</li>
+            <!--<li data-duration="thu-fri½" data-color="#e03f3f">Task</li>
+            <li data-duration="mon½-wed½" data-color="#59a627">Task</li>-->
+          </ul>
+    </div>
+
+    
+    
+</template>

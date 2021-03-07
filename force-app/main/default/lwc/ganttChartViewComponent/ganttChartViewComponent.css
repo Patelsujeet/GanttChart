@@ -1,0 +1,28 @@
+.c-container {
+   
+    margin: 5px 0 100px 0;
+}
+.page-section {
+    border: solid 1px #ccc;
+   
+}
+.page-header
+ {
+    height: 50px;
+    padding: 5px;
+}
+.page-footer{
+
+}
+.page-main {
+    background: #f8f8f8;
+    padding: 5px;
+}
+
+.page-right {
+    background: #f0efef;
+}
+
+.slds-p-around_small, .slds-p-around--small {
+    padding: 5px;
+}

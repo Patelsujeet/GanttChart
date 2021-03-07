@@ -1,0 +1,43 @@
+<template>
+   
+    <div class="slds-clearfix">
+        <div class="slds-float_left">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                  <span>
+                    <lightning-button-group>
+                        <lightning-button variant="brand" icon-name="utility:chevronleft"></lightning-button>
+                        <lightning-button  variant="brand" icon-name="utility:chevronright" ></lightning-button>
+                    </lightning-button-group>
+                  </span>
+                </div>
+                <div class="slds-col">
+                  <span>  
+                    <lightning-button label="Today" variant="brand"></lightning-button>
+                  </span>
+                </div>
+                <div class="slds-col">
+                  <span class="slds-text-heading_large">  
+                   {todayDate}
+                  </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-float_right">
+            <lightning-button-group>
+                <lightning-button label="Day" value="1" variant="brand" onclick={dayFilterhandler}>
+
+                </lightning-button>
+               
+                <lightning-button label="Week"  value="2" variant="brand" onclick={dayFilterhandler}>
+
+                </lightning-button>
+                <lightning-button label="Month"  value="3" variant="brand" onclick={dayFilterhandler}>
+
+                </lightning-button>
+            </lightning-button-group>
+        </div>
+    
+    </div>
+</template>
