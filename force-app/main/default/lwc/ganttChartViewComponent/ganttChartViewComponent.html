@@ -1,60 +1,40 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-25-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   03-25-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
 <template>
-
     <div class="c-container">
         <lightning-layout multiple-rows="true">
-            <lightning-layout-item padding="around-small" size="12" 
-                                class="slds-card"
-                               >
+            <lightning-layout-item padding="around-small" size="12" class="slds-card">
                 <div class="page-header">
-                 <!-- This is header comoonent-->
+                    <!-- This is header comoonent-->
                     <c-gantt-chart-header></c-gantt-chart-header>
-                </div>
-            </lightning-layout-item>
-            <lightning-layout-item padding="around-small" size="12">
-                <lightning-layout>
-                    <lightning-layout-item padding="around-small" size="2"
-                     >
-                        <div class="page-right">
-                            <!--this is left side columns-->
-                            
-                            <c-gantt-chart-left>
 
-                            </c-gantt-chart-left>
-                        </div>
-                    </lightning-layout-item>
-                    <lightning-layout-item padding="around-small" size="10" 
-                                           >
-                        <div class="page-main">
-                          
-                            <c-gantt-chart></c-gantt-chart>
-                        </div>
-                    </lightning-layout-item>
-                   <!--
-                    <lightning-layout-item padding="around-small" size="2">
-                        <div class="page-section page-right">
-                            <h2>Right Sidebar</h2>
-                            <ul>
-                                <li><a href="#">Archive 1</a>
-                                </li>
-                                <li><a href="#">Archive 2</a>
-                                </li>
-                                <li><a href="#">Archive 3</a>
-                                </li>
-                                <li><a href="#">Archive 4</a>
-                                </li>
-                                <li><a href="#">Archive 5</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </lightning-layout-item>
-                   --> 
-                </lightning-layout>
-            </lightning-layout-item>
-            <lightning-layout-item flexibility="auto" padding="around-small" size="12">
-                <div class="page-footer page-section">
-                    <h2>Footer</h2>
                 </div>
             </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small" flexibility="auto" size="12" class="slds-card">
+                <div class="page-main">
+                    <c-gantt-chart></c-gantt-chart>
+                </div>
+                <!--<lightning-layout>
+                    <lightning-layout-item padding="around-small" size="12">
+                        
+                    </lightning-layout-item>
+
+                </lightning-layout>-->
+            </lightning-layout-item>
+
+            <!--this is footer section-->
+
+            <!--<lightning-layout-item flexibility="auto" padding="around-small" size="12">
+            </lightning-layout-item>-->
         </lightning-layout>
     </div>
 

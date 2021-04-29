@@ -1,0 +1,69 @@
+<template>
+  <lightning-record-edit-form record-id={recordId} object-api-name="Resource_Schedule__c" onsubmit={handleSubmit}
+    onsuccess={handleSuccess}>
+
+    <div class="slds-grid slds-grid_vertical">
+      <div class="slds-col">
+        <span>
+          <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-2">
+              <!-- Your lightning-input-field components here -->
+              <template if:true={onlyUpdate}>
+                <lightning-input-field field-name="Contact__c" value={contactId} class="contactName">
+
+                </lightning-input-field>
+              </template>
+
+<template if:true={dynamicLookup}>
+                <c-custom-lookup obj-name="Contact" search-placeholder="Search Resource" icon-name="standard:contact"
+                  onlookupselected={handleAccountSelection}>
+
+                </c-custom-lookup>
+
+              </template>
+
+
+<lightning-input-field field-name="Name"></lightning-input-field>
+<lightning-input-field field-name="Location__c"></lightning-input-field>
+<lightning-input-field field-name="Schedule_Type__c"></lightning-input-field>
+
+
+</div>
+<div class="slds-col slds-size_1-of-2">
+    <!-- More lightning-input-field components here -->
+    <lightning-input-field field-name="Start__c" value={startDate} onchange={dateChangeHandler}></lightning-input-field>
+    <lightning-input-field field-name="End__c" value={endDate}></lightning-input-field>
+    <lightning-input-field field-name="Boat_Type__c"></lightning-input-field>
+    <lightning-input-field field-name="Details__c"></lightning-input-field>
+</div>
+</div>
+</span>
+</div>
+
+<div class="slds-col">
+    <span>
+          <div class="slds-grid slds-gutters" style="width: fit-content;">
+            <div class="slds-col">
+              <span>
+                <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update">
+                </lightning-button>
+              </span>
+</div>
+<div class="slds-col">
+    <span>
+                <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+              </span>
+</div>
+</div>
+</span>
+</div>
+
+</div>
+
+
+
+</lightning-record-edit-form>
+
+
+<c-resource-available default-date={defaultSelectedDate} onselectrow={selectRowHandler} available-p-r-n-resource={availablePRNResource} available-repeating-resource={availableRepeatingResource} onselectprnresource={selectPRNRowHandler}></c-resource-available>
+</template>

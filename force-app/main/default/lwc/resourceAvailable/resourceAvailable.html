@@ -1,0 +1,50 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 04-04-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   04-04-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-box slds-size_1-of-3">
+          <span>
+                <div style="height: 290px;">
+                    <h1 class="slds-align_absolute-center slds-text-heading_small">Repeating Resources</h1>
+                    <lightning-datatable
+                            key-field="Id"
+                            data={availableRepeatingResource}
+                            columns={columnsRR}
+                            hide-checkbox-column={hideRRCheckbox}
+                            onrowselection={handleRowActionRR}
+                           >
+                    </lightning-datatable>
+
+                </div>  
+          </span>
+        </div>
+        <div class="slds-col slds-box slds-size_2-of-3">
+          <span>
+              
+            <div style="height: 290px;">
+                <h1 class="slds-align_absolute-center slds-text-heading_small">PRN Resources</h1>
+                <lightning-datatable
+                        key-field="Id"
+                        data={availablePRNResource}
+                        columns={columnsPRN}
+                        onrowselection={handleRowActionPRN}
+                        hide-checkbox-column={hidePRNCheckbox}
+                        >
+                </lightning-datatable>
+            </div>    
+          </span>
+        </div>
+      </div>
+
+   
+
+</template>

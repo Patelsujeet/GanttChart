@@ -1,25 +1,169 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-28-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   03-26-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
 <template>
 
-    <div class="chart-wrapper">
-        <ul class="chart-values">
-            <template for:each={ganttChartColumnsHeader} for:item="col">
-                <li key={col} >{col}</li>
-            </template>
-        </ul>
+    <template if:true={loadingSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+<!--<div style="height: 390px;">-->
+<div style="height: 700px;">
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <span>
+                    <lightning-button variant="brand" icon-name="utility:chevronleft" onclick={leftHandler}>
+                    </lightning-button>
+                </span>
+        </div>
+        <div class="slds-col" style="float: right;">
+            <span>
+                    <lightning-button style="float: right;" variant="brand" icon-name="utility:chevronright"
+                        onclick={rightHandler}>
+                    </lightning-button>
+                </span>
+        </div>
+    </div>
+    <br />
+    <!--<table class="slds-table slds-table_bordered slds-table_header-fixed slds-table_resizable-cols slds-table_fixed-layout">
+    <thead>
+        <tr>
+            <th class="slds-is-resizable dv-dynamic-width" scope="col">
+                <div class="slds-cell-fixed">
+                    <a class="slds-th__action slds-text-link--reset ">
+                        <span class="slds-truncate">Column 1</span>
+                    </a>
+                    <div class="slds-resizable">
+                        <span class="slds-resizable__handle">
+                            <span class="slds-resizable__divider"></span>
+                        </span>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+    <!--<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">-->
+
+    <!--<div class="slds-grid slds-wrap slds-scrollable" style="height: 350px;">-->
+    <div class="slds-grid slds-wrap slds-scrollable" style="height: 660px;">
+        <div class="slds-col">
+            <div class="chart-wrapper">
+                <div class="chart-fixed-header">
+                    <ul class="chart-values slds-page-header" style="font-size: 12px;">
+                        <template for:each={ganttChartColumnsHeader} for:item="col">
+                                <li key={col} data-min={col} style="border: 1px solid black;">{col}</li>
+                            </template>
+                    </ul>
+                </div>
 
 
-        <ul class="chart-bars">
-            
-            <li data-duration="Jan-Mar" data-color="#33a8a5" >R814220 Kum Ma</li>
-            <li data-duration="May-Jul" data-color="#30997a" >R8144165 Michael Domma</li>
-           
-          
-            <li data-duration="Feb-Aug" data-color="#3d8bb1" >Development</li>
-            <!--<li data-duration="thu-fri½" data-color="#e03f3f">Task</li>
-            <li data-duration="mon½-wed½" data-color="#59a627">Task</li>-->
-          </ul>
+                <ul class="chart-bars">
+                    <template for:each={gantChartData} for:item="data">
+                            <p key={data.contactId} class="slds-grid" data-contid={data.contactId}
+                                onclick={createAssigneeHandler} style="font-size: 15px;width:100px;left: 0;position: sticky;">
+                                <!--<a href="#" class="slds-truncate" title={data.contactName}> {data.contactName} </a>-->
+                                <span class="slds-truncate" title={data.contactName} style="cursor: pointer;background: #91db8b;"> {data.contactName} </span>
+                                <br />
+                            </p>
+
+                            <template for:each={data.resource} for:item="res">
+                                <li data-start={res.resourceStartTime} data-end={res.resourceEndTime}
+                                    data-id={res.resourceId} data-color="#FFFFFF" title={res.resourceToolTipMessage}
+                                    key={res.resourceId} onclick={resourceModifcationHandler}>{res.resourceName}</li>
+
+                            </template>
+
+                    <hr key={data.contactId} />
+
+                    </template>
+                </ul>
+
+            </div>
+
+        </div>
     </div>
 
-    
-    
+
+    <!--
+<div class="slds-scrollable_x">
+    <div class="slds-grid slds-gutters">
+        <template for:each={header} for:item="col">
+                <div class="slds-col slds-size_1-of-24" key={col}>
+                    <span>{col}</span>
+                </div>
+        </template>
+    </div>
+
+    <template for:each={gantChartData} for:item="col"> 
+        <div class="slds-grid slds-gutters" key={col.assigneeId}>
+            <template for:each={col.resource_task} for:item="meet">
+                <div class="slds-col slds-size_1-of-24" key={meet.element} style={meet.backgroundColor}>
+                    <span class={meet.elementVisibility}>{meet.element}</span>
+                </div>
+            </template>
+</div>
+</template>
+</div>
+
+-->
+
+    <template if:true={isModalOpen}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small" onclick={closeModal}></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{modelHeader}</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <template if:true={recordUpdation}>
+                            <c-resource-updation-form record-id={resource_id} onupdateresource={resourceUpdatehandler}
+                                onactive_spinner={spinerActive} onclosemodel={closeModal}
+                                default-selected-date={selected_date}>
+
+                            </c-resource-updation-form>
+                        </template>
+
+    <template if:true={recordCreation}>
+                            <c-resource-creation-form assignee-type={assignee_type} contactid={contactId}
+                                onupdateresource={resourceUpdatehandler} onactive_spinner={spinerActive}
+                                onclosemodel={closeModal}
+                                default-selected-date={selected_date}>
+
+                            </c-resource-creation-form>
+                        </template>
+
+</div>
+<!-- Modal/Popup Box LWC footer starts here -->
+<!--<footer class="slds-modal__footer">
+
+</footer>-->
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+
+</div>
 </template>

@@ -1,43 +1,87 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 03-28-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   03-26-2021   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
 <template>
-   
-    <div class="slds-clearfix">
-        <div class="slds-float_left">
-            <div class="slds-grid slds-gutters">
-                <div class="slds-col">
-                  <span>
-                    <lightning-button-group>
-                        <lightning-button variant="brand" icon-name="utility:chevronleft"></lightning-button>
-                        <lightning-button  variant="brand" icon-name="utility:chevronright" ></lightning-button>
-                    </lightning-button-group>
-                  </span>
-                </div>
-                <div class="slds-col">
-                  <span>  
-                    <lightning-button label="Today" variant="brand"></lightning-button>
-                  </span>
-                </div>
-                <div class="slds-col">
-                  <span class="slds-text-heading_large">  
-                   {todayDate}
-                  </span>
-                </div>
+  <div class="slds-clearfix">
+    <div class="slds-float_left">
+      <ul>
+        <li>
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+              <span class="slds-text-heading_medium"> {todayDate} </span>
             </div>
-        </div>
-        
-        <div class="slds-float_right">
-            <lightning-button-group>
-                <lightning-button label="Day" value="1" variant="brand" onclick={dayFilterhandler}>
+          </div>
+        </li>
+        <li>
+          <div class="slds-grid slds-gutters">
+            <!--<div class="slds-col">
+              <span>
+                <lightning-button-group>
+                    <lightning-button variant="brand" icon-name="utility:chevronleft" onclick={leftHandler}></lightning-button>
+                    <lightning-button  variant="brand" icon-name="utility:chevronright" onclick={rightHandler}></lightning-button>
+                </lightning-button-group>
+              </span>
+            </div>-->
+            <div class="slds-col" style="font-size: 13px;">
+              <lightning-combobox name="location" label="Location" placeholder="Select Location" value="All"
+                options={location_option} onchange={locationhandleChange}></lightning-combobox>
+            </div>
+            <div class="slds-col" style="font-size: 13px;">
+              <lightning-combobox name="Schedule Type" label="Schedule Type" placeholder="Select Schedule Type	"
+                value="All" data-schedule="schedule" options={schedule_option} onchange={scheduleTypehandleChange}>
+              </lightning-combobox>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-                </lightning-button>
-               
-                <lightning-button label="Week"  value="2" variant="brand" onclick={dayFilterhandler}>
-
-                </lightning-button>
-                <lightning-button label="Month"  value="3" variant="brand" onclick={dayFilterhandler}>
-
-                </lightning-button>
-            </lightning-button-group>
-        </div>
-    
     </div>
+
+    <div class="slds-float_right" style="font-size: 13px;">
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <span>
+                <lightning-input style="padding-top: 24px;" type="date" name="dateSelection" value={today_SelectedDate}
+                  label="Select Date" onchange={changeDateHandler}></lightning-input>
+            </span>
+        </div>
+      </div>
+</div>
+<br />
+</div>
+<!-- center button -->
+<div class="slds-align_absolute-center">
+    <div class="slds-is-absolute" style="top: 60%; left: 50%; margin-left: -100px">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <span>
+                  <template if:true={botButtonVisible}>
+                    <lightning-button label="Switch to Boats" onclick={botHandler} variant="brand"></lightning-button>
+                  </template>
+
+<template if:true={instructorButtonVisible}>
+                    <lightning-button label="Switch to Instructor" onclick={instructorHandler} variant="brand"></lightning-button>
+                  </template>
+</span>
+</div>
+<div class="slds-col">
+    <span>
+                  <template if:true={botButtonVisible}>
+                    <lightning-button label="New Event" onclick={newEventHandler} variant="brand"></lightning-button>
+                  </template>
+                </span>
+</div>
+</div>
+
+
+</div>
+</div>
+<br />
 </template>

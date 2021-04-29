@@ -1,0 +1,50 @@
+/*.slds-th__action_form {
+    display: none !important
+}*/
+.slds-col .slds-box .slds-size_2-of-3 .datatable-select-all {
+    display: none !important;
+}
+
+/*
+.slds-table .slds-line-height_reset .slds-th__action .slds-checkbox {
+    display: none !important;
+}*/
+
+
+/*slds-th__action slds-th__action_form slds-cell-fixed*/
+
+
+/*
+.slds-cell-fixed.slds-th__action {
+    display: none;
+}*/
+
+
+/*
+.slds-th__action>.slds-checkbox {
+    display: none;
+}*/
+
+
+/*
+.slds-table .slds-line-height_reset .slds-th__action_form {
+    display: none;
+}*/
+
+
+/*
+.slds-table .slds-th__action.slds-th__action_form.slds-cell-fixed {
+    display: none;
+}*/
+
+
+/*.THIS lightning-primitive-header-actions {
+    display: none;
+}*/
+
+
+/*
+.slds-th__action_form,
+.slds-th__action--form {
+    display: none;
+}*/
